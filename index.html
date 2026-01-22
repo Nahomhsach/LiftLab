@@ -571,9 +571,11 @@ async function loadStudentClass(classId) {
   snap.forEach(docu => {
     const w = docu.data();
 
-    const embedUrl = w.videoUrl
-      ? w.videoUrl.replace("watch?v=", "embed/")
-      : null;
+    const videoId = w.videoUrl.split("v=")[1]?.split("&")[0];
+const embedUrl = videoId
+  ? `https://www.youtube.com/embed/${videoId}`
+  : null;
+
 
     studentWorkoutList.innerHTML += `
       <div class="workout-card">
@@ -582,7 +584,13 @@ async function loadStudentClass(classId) {
 
         ${embedUrl ? `
           <div class="video-wrapper">
-            <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+            <iframe
+  src="${embedUrl}"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen>
+</iframe>
+
           </div>
           <a href="${w.videoUrl}" target="_blank" class="video-link">
             Workout Video
