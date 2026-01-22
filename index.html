@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <title>LiftLab</title>
-
-  <link rel="icon" href="https://plus.unsplash.com/premium_photo-1664298367434-0408974ab0bb?fm=jpg&q=60&w=3000">
+  <link rel="icon" type="image/x-icon" href="https://logodix.com/logo/2051355.png">
   <link rel="stylesheet" href="style.css" />
 </head>
 
@@ -17,6 +16,11 @@
     <button id="loginBtnNav" class="nav-btn">Login</button>
     <button id="signupBtnNav" class="nav-btn outline">Sign Up</button>
     <button id="logoutBtnNav" class="nav-btn logout" style="display:none;">Logout</button>
+    <button id="logoutBtnBottom" class="logout-btn bottom-logout" style="display:none;">
+  Logout
+</button>
+
+    
   </div>
 </nav>
 
@@ -48,6 +52,11 @@
       <h3>Track Progress</h3>
       <p>Log sets, reps, and weights easily.</p>
     </div>
+    <div class="info-card">
+      <img src="https://picsum.photos/300/200?2">
+      <h3>Exercise Videos</h3>
+      <p>Watch exactly how each lift is performed.</p>
+    </div>
   </section>
 
   <!-- ZIGZAG INFO -->
@@ -56,8 +65,11 @@
     <div class="info-row reveal reveal-left">
       <div class="info-text">
         <h2>Built for School Weight Rooms</h2>
-        <p>Structured, progressive programs designed for students.</p>
-        <p>Safe. Organized. Effective.</p>
+        <p>LiftLab was designed specifically for school environments — not commercial gyms.
+Instructors can manage multiple classes, assign structured workouts, and ensure
+students train safely and consistently.</p>
+        <p>Whether it’s PE, strength & conditioning, or athletic development, LiftLab keeps
+everything organized and easy to manage.</p>
       </div>
       <div class="info-image">
         <img src="https://picsum.photos/600/400?strength1">
@@ -67,8 +79,10 @@
     <div class="info-row reverse reveal reveal-right">
       <div class="info-text">
         <h2>Video-Guided Exercises</h2>
-        <p>Clear demonstrations for every movement.</p>
-        <p>No confusion. No bad form.</p>
+        <p>Every workout can include exercise demonstration videos so students always know
+exactly how each movement should be performed.</p>
+        <p>This reduces confusion, improves technique, and helps prevent injury — especially
+for beginners who are new to lifting.</p>
       </div>
       <div class="info-image">
         <img src="https://picsum.photos/600/400?strength2">
@@ -78,14 +92,27 @@
     <div class="info-row reveal reveal-left">
       <div class="info-text">
         <h2>Track Progress Over Time</h2>
-        <p>Students log sets, reps, and weights.</p>
-        <p>Instructors monitor trends.</p>
+        <p>Students log the weight they use for each workout, creating accountability and
+encouraging effort.</p>
+        <p>Instructors can review workout completion, monitor trends, and ensure students are
+actually following the program instead of guessing or skipping work.</p>
       </div>
       <div class="info-image">
         <img src="https://picsum.photos/600/400?strength3">
       </div>
     </div>
-
+<div class="info-row reverse reveal reveal-right">
+      <div class="info-text">
+        <h2>Video-Guided Exercises</h2>
+        <p>Instructors can see exactly who completed each workout, what weights were used,
+and which students may need extra guidance.</p>
+        <p>Students can also leave comments or questions, allowing instructors to provide
+feedback and support — all in one place.</p>
+      </div>
+      <div class="info-image">
+        <img src="https://picsum.photos/600/400?strength4">
+      </div>
+    </div>
   </section>
 
   <!-- CTA -->
@@ -127,71 +154,89 @@
 
 <!-- ================= DASHBOARD ================= -->
 <!--Student Side-->
-<section class="card" id="studentSection" style="display:none;">
 
-  <h2 class="big-header">Join a Class</h2>
 
-  <input id="joinClassId" placeholder="Enter Class ID">
-  <button id="joinClassBtn">Join Class</button>
 
-  <p id="joinStatus"></p>
+<section id="dashboard" style="display:none; padding-top:140px;">
+<!-- STUDENT SECTION -->
+ <section id="studentSection" style="display:none;">
 
-  <hr>
+  <!-- HELLO -->
+  <h2 id="studentGreeting" class="greeting-title"></h2>
 
-  <h2 id="studentClassTitle" style="display:none;"></h2>
+  <!-- JOIN CLASS CARD -->
+  <section class="card">
+    <h2 class="big-header">Join a Class</h2>
+    <input id="joinClassId" placeholder="Enter Class ID">
+    <button id="joinClassBtn">Join Class</button>
+    <p id="joinStatus"></p>
+  </section>
 
-  <div id="studentWorkoutList"></div>
+  <!-- WORKOUTS CARD -->
+  <section class="card">
+    <h2 id="studentClassTitle" style="display:none;"></h2>
+    <div id="studentWorkoutList"></div>
+  </section>
 
-  <hr>
+  <!-- COMMENTS CARD -->
+  <section class="card">
+    <h3>Comments for Instructor</h3>
+    <textarea id="commentText" placeholder="Ask a question or leave feedback"></textarea>
+    <button id="postCommentBtn">Post Comment</button>
+    <div id="commentStatus"></div>
+  </section>
 
-  <h3>Comments for Instructor</h3>
-  <textarea id="commentText" placeholder="Ask a question or leave feedback"></textarea>
-  <button id="postCommentBtn">Post Comment</button>
+</section>
+<!-- INSTRUCTOR SECTION -->
+  <section id="instructorSection" style="display:none;">
 
-  <div id="commentStatus"></div>
+  <!-- HELLO -->
+  <h2 id="instructorGreeting" class="greeting-title"></h2>
+
+  <!-- CREATE CLASS -->
+  <section class="card">
+    <h3>Create Class</h3>
+    <input type="text" id="className" placeholder="Class Name">
+    <button id="createClassBtn">Create Class</button>
+    <p id="classStatus"></p>
+  </section>
+
+  <!-- CREATE WORKOUT -->
+  <section class="card">
+    <h3>Create Workout</h3>
+    <input id="workoutTitle" placeholder="Workout Name">
+    <input id="exerciseName" placeholder="Exercise Name">
+    <input id="sets" type="number" placeholder="Sets">
+    <input id="reps" type="number" placeholder="Reps">
+    <input id="videoUrl" placeholder="Exercise Video URL">
+
+    <select id="classSelect">
+      <option value="">Save for later (no class)</option>
+    </select>
+
+    <button id="saveWorkoutBtn">Save Workout</button>
+    <p id="workoutStatus"></p>
+  </section>
+
+  <!-- WORKOUT LIST -->
+  <section class="card">
+    <h3>Your Workouts</h3>
+    <div id="workoutList"></div>
+  </section>
+
+  <!-- CLASS LIST -->
+  <section class="card">
+    <h3>Your Classes</h3>
+    <div id="classList"></div>
+  </section>
+
+  <section class="card">
+<h3>Student Workout Logs</h3>
+<div id="logList"></div>
+  </section>
 
 </section>
 
-<section id="dashboard" style="display:none; padding-top:140px;">
-  <section class="card" id="instructorSection" style="display:none;">
-
-
-    <center><h2>Instructor Dashboard</h2></center>
-    
-
-    
-    <input type="text" id="className" placeholder="Class Name (e.g. Period 3 Strength)">
-<button id="createClassBtn">Create Class</button>
-
-<p id="classStatus"></p>
-<h3>Create Workout</h3>
-
-<input id="workoutTitle" placeholder="Workout Name">
-
-<input id="exerciseName" placeholder="Exercise Name">
-<input id="sets" type="number" placeholder="Sets">
-<input id="reps" type="number" placeholder="Reps">
-<input id="videoUrl" placeholder="Exercise Video URL">
-
-<select id="classSelect">
-  <option value="">Save for later (no class)</option>
-</select>
-
-<button id="saveWorkoutBtn">Save Workout</button>
-
-<p id="workoutStatus"></p>
-
-<hr>
-
-<h3>Your Workouts</h3>
-<div id="workoutList"></div>
-
-<hr>
-
-<h3>Your Classes</h3>
-<div id="classList"></div>
-
-  </section>
 </section>
 
 
@@ -201,9 +246,9 @@
 <footer class="site-footer">
   <div class="footer-content">
     <div class="footer-contact">
-      <h4>LiftLab HQ</h4>
-      <p>123 Strength Ave, Columbus, OH</p>
-      <p>Email: support@liftlab.org</p>
+      <h4>Lift Lab</h4>
+      <p>3592 Corporate Dr, Columbus, OH</p>
+      <p>Email: student.ngirmay56@hsach.org</p>
     </div>
     <div class="footer-links">
       <p>© 2026 LiftLab</p>
@@ -252,8 +297,8 @@ backHomeBtn.onclick = showHomePage;
 /* FIREBASE */
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-import { collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, doc, setDoc, getDoc, serverTimestamp, collection, addDoc, deleteDoc, updateDoc, arrayUnion, getDocs, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 
 
 const firebaseConfig = {
@@ -292,12 +337,54 @@ signupBtn.onclick = async () => {
   });
 };
 
+saveWorkoutBtn.onclick = async () => {
+  const user = auth.currentUser;
+  if (!user) return;
 
+  await addDoc(collection(db, "workouts"), {
+    title: workoutTitle.value,
+    exercise: exerciseName.value,
+    sets: Number(sets.value),
+    reps: Number(reps.value),
+    videoUrl: videoUrl.value,
+    instructorId: user.uid,
+    classId: classSelect.value || null,
+    createdAt: serverTimestamp()
+  });
+workoutStatus.textContent = "Workout saved!";
+  loadInstructorData();
+};
+logoutBtnNav.onclick = async () => {
+  await signOut(auth);
 
-logoutBtnNav.onclick = () => signOut(auth);
+  // hard reset UI
+  studentSection.style.display = "none";
+  instructorSection.style.display = "none";
+  dashboard.style.display = "none";
+
+  studentWorkoutList.innerHTML = "";
+  studentClassTitle.style.display = "none";
+  joinStatus.textContent = "";
+
+  showHomePage();
+};
+
+const logList = document.getElementById("logList");
 
 /* AUTH STATE */
 onAuthStateChanged(auth, async (user) => {
+  async function loadStudentIfJoined(user) {
+  const snap = await getDoc(doc(db, "users", user.uid));
+  const joinedClass = snap.data()?.joinedClass;
+  
+
+
+
+  if (joinedClass) {
+    loadStudentClass(joinedClass);
+  }
+}
+
   if (user) {
     loginBtnNav.style.display = "none";
     signupBtnNav.style.display = "none";
@@ -310,18 +397,84 @@ onAuthStateChanged(auth, async (user) => {
 
     const snap = await getDoc(doc(db, "users", user.uid));
     const role = snap.data().role;
-    
+    const userName = snap.data().name;
+
+if (role === "student") {
+  document.getElementById("studentGreeting").textContent =
+    `Hello, ${userName}`;
+}
+
+if (role === "instructor") {
+  document.getElementById("instructorGreeting").textContent =
+    `Hello, ${userName}`;
+}
+
 
   instructorSection.style.display = role === "instructor" ? "block" : "none";
   studentSection.style.display = role === "student" ? "block" : "none";
 
+if (role === "instructor") {
+  instructorSection.style.display = "block";
+  loadInstructorData();
+  loadWorkoutLogs(); // ✅ RIGHT HERE
+}
+
+if (role === "student") {
+  loadStudentIfJoined(user);
+}
+
+
   } else {
-    logoutBtnNav.style.display = "none";
-    loginBtnNav.style.display = "inline-block";
-    signupBtnNav.style.display = "inline-block";
-    showHomePage();
-  }
+  logoutBtnNav.style.display = "none";
+  loginBtnNav.style.display = "inline-block";
+  signupBtnNav.style.display = "inline-block";
+
+  studentSection.style.display = "none";
+  instructorSection.style.display = "none";
+  dashboard.style.display = "none";
+
+  showHomePage();
+}
+
 });
+async function loadWorkoutLogs() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  logList.innerHTML = "";
+
+  const classesSnap = await getDocs(
+    query(collection(db, "classes"), where("instructorId", "==", user.uid))
+  );
+
+  if (classesSnap.empty) {
+    logList.innerHTML = "<em>No student logs yet</em>";
+    return;
+  }
+
+  for (const classDoc of classesSnap.docs) {
+    const logsSnap = await getDocs(
+      query(
+        collection(db, "workoutLogs"),
+        where("classId", "==", classDoc.id),
+        orderBy("completedAt", "desc")
+      )
+    );
+
+    logsSnap.forEach(docu => {
+      const log = docu.data();
+
+      logList.innerHTML += `
+        <div class="log-card">
+          <strong>${log.studentName}</strong><br>
+          Class: ${classDoc.data().name}<br>
+          Workout: ${log.workoutTitle}<br>
+          Weight: ${log.weight} lbs
+        </div>
+      `;
+    });
+  }
+}
 
 /* NAVBAR SCROLL EFFECT */
 const navbar = document.querySelector(".navbar");
@@ -372,7 +525,6 @@ classStatus.textContent = `Class "${classNameInput.value}" created`;
   }
 });
 
-import { updateDoc, arrayUnion } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
 joinClassBtn.onclick = async () => {
   const classId = joinClassId.value.trim();
@@ -403,6 +555,7 @@ joinClassBtn.onclick = async () => {
 
 async function loadStudentClass(classId) {
   const classSnap = await getDoc(doc(db, "classes", classId));
+
   studentClassTitle.style.display = "block";
   studentClassTitle.textContent = classSnap.data().name;
 
@@ -414,16 +567,48 @@ async function loadStudentClass(classId) {
   );
 
   const snap = await getDocs(q);
+
   snap.forEach(docu => {
     const w = docu.data();
+
+    const embedUrl = w.videoUrl
+      ? w.videoUrl.replace("watch?v=", "embed/")
+      : null;
+
     studentWorkoutList.innerHTML += `
       <div class="workout-card">
         <h4>${w.title}</h4>
         <p>${w.exercise} — ${w.sets}x${w.reps}</p>
+
+        ${embedUrl ? `
+          <div class="video-wrapper">
+            <iframe src="${embedUrl}" frameborder="0" allowfullscreen></iframe>
+          </div>
+          <a href="${w.videoUrl}" target="_blank" class="video-link">
+            Workout Video
+          </a>
+        ` : ""}
+
+        <input
+          type="number"
+          placeholder="Weight used (lbs)"
+          class="weight-input"
+          id="weight-${docu.id}"
+        >
+
+        <button
+          class="complete-btn"
+          onclick="completeWorkout('${docu.id}', '${w.title}')"
+        >
+          Mark Complete
+        </button>
+
+        <p class="complete-status" id="status-${docu.id}"></p>
       </div>
     `;
   });
 }
+
 
 postCommentBtn.onclick = async () => {
   const user = auth.currentUser;
@@ -443,6 +628,128 @@ postCommentBtn.onclick = async () => {
 
   commentText.value = "";
   commentStatus.textContent = "Comment sent!";
+};
+
+
+async function loadInstructorData() {
+  const user = auth.currentUser;
+  if (!user) return;
+
+  // CLASSES
+  classList.innerHTML = "";
+  classSelect.innerHTML = `<option value="">Save for later (no class)</option>`;
+  const classSnap = await getDocs(
+    query(collection(db, "classes"), where("instructorId", "==", user.uid))
+  );
+
+  classSnap.forEach(c => {
+    classList.innerHTML += `
+  <div class="workout-card">
+    <strong>${c.data().name}</strong><br>
+    <small>${c.id}</small>
+
+    <div id="students-${c.id}" style="margin-top:10px;"></div>
+
+    <button onclick="loadStudents('${c.id}')">View Students</button>
+    <button onclick="deleteClass('${c.id}')">Delete Class</button>
+  </div>
+`;
+
+
+    classSelect.innerHTML += `
+  <option value="${c.id}">
+    ${c.data().name}
+  </option>
+`;
+
+  });
+  
+  
+
+
+window.deleteClass = async (classId) => {
+  if (!confirm("Delete this class? This cannot be undone.")) return;
+
+  await deleteDoc(doc(db, "classes", classId));
+
+  loadInstructorData();
+};
+window.deleteWorkout = async (workoutId) => {
+  if (!confirm("Delete this workout?")) return;
+
+  await deleteDoc(doc(db, "workouts", workoutId));
+
+  loadInstructorData();
+};
+
+
+window.loadStudents = async (classId) => {
+  const container = document.getElementById(`students-${classId}`);
+  container.innerHTML = "<em>Loading...</em>";
+
+  const snap = await getDocs(
+    query(collection(db, "users"), where("joinedClass", "==", classId))
+  );
+
+  if (snap.empty) {
+    container.innerHTML = "<em>No students yet</em>";
+    return;
+  }
+
+  container.innerHTML = snap.docs
+    .map(u => `<div>👤 ${u.data().name}</div>`)
+    .join("");
+};
+
+  
+
+
+  // WORKOUTS
+  workoutList.innerHTML = "";
+  const workoutSnap = await getDocs(
+    query(collection(db, "workouts"), where("instructorId", "==", user.uid))
+  );
+
+  workoutSnap.forEach(w => {
+    workoutList.innerHTML += `
+  <div class="workout-card">
+    <strong>${w.data().title}</strong><br>
+    ${w.data().exercise} — ${w.data().sets}x${w.data().reps}<br><br>
+    <button onclick="deleteWorkout('${w.id}')">Delete Workout</button>
+  </div>
+`;
+
+  });
+}
+window.completeWorkout = async (workoutId, workoutTitle) => {
+  const user = auth.currentUser;
+  const weightInput = document.getElementById(`weight-${workoutId}`);
+  const status = document.getElementById(`status-${workoutId}`);
+
+  const weight = weightInput.value;
+  if (!weight) {
+    status.textContent = "Enter weight used";
+    return;
+  }
+
+  const userSnap = await getDoc(doc(db, "users", user.uid));
+  const classId = userSnap.data().joinedClass;
+
+  // 👇 THIS is where studentId_workoutId exists
+  const logId = `${user.uid}_${workoutId}`;
+  const logRef = doc(db, "workoutLogs", logId);
+
+  await setDoc(logRef, {
+    workoutId,
+    workoutTitle,
+    classId,
+    studentId: user.uid,
+    studentName: userSnap.data().name,
+    weight,
+    completedAt: serverTimestamp()
+  }, { merge: true });
+
+  status.textContent = "Workout logged ✅";
 };
 
 
