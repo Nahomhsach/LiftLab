@@ -122,7 +122,7 @@ body {
 .greeting-title::after {
   content: "";
   display: block;
-  width: 120px;
+  width: 300px;
   height: 4px;
   margin: 12px auto 0;
 
@@ -632,3 +632,4 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   opacity: 1;                 /* IMPORTANT */
 }
+
